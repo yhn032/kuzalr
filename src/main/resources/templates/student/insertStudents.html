@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insert Student</title>
+    <link rel="stylesheet" href="/css/showStudents.css" />
+</head>
+<script>
+    function createTag(){
+
+        const tagArea = document.getElementById('usrForm');
+        const new_Tag = document.createElement('input');
+        const new_Tag2 = document.createElement('input');
+        const new_br = document.createElement('br');
+
+        new_Tag.setAttribute('type', 'text');
+        new_Tag.setAttribute('class', 'inputTxt');
+        new_Tag.setAttribute('value', '');
+        new_Tag.setAttribute('name', 'name');
+        new_Tag.setAttribute('placeholder', '이름');
+
+        new_Tag2.setAttribute('type', 'text');
+        new_Tag2.setAttribute('class', 'inputTxt');
+        new_Tag2.setAttribute('value', '');
+        new_Tag2.setAttribute('name', 'christian_name');
+        new_Tag2.setAttribute('placeholder', '세례명');
+
+        tagArea.appendChild(new_Tag);
+        tagArea.appendChild(new_Tag2);
+        tagArea.appendChild(new_br);
+
+    }
+
+    function sendUser(){
+        const usrForm = document.getElementById("usrForm");
+        usrForm.submit();
+    }
+</script>
+<body style="background-color: burlywood;">
+<div class="container right-panel-active">
+    <div class="container__form container--signup" style="text-align: center">
+        <form action="/student/createUser" class="form" id="usrForm" method="post">
+            <h1 class="form__title">Insert User</h1>
+            <input class="inputTxt" type="text" value="" name="name" placeholder="이름">
+            <input class="inputTxt" type="text" value="" name="christian_name" placeholder="세례명"><br>
+            <input class="inputTxt" type="text" value="" name="name" placeholder="이름">
+            <input class="inputTxt" type="text" value="" name="christian_name" placeholder="세례명"><br>
+            <input class="inputTxt" type="text" value="" name="name" placeholder="이름">
+            <input class="inputTxt" type="text" value="" name="christian_name" placeholder="세례명"><br>
+            <input class="inputTxt" type="text" value="" name="name" placeholder="이름">
+            <input class="inputTxt" type="text" value="" name="christian_name" placeholder="세례명"><br>
+            <input class="inputTxt" type="text" value="" name="name" placeholder="이름">
+            <input class="inputTxt" type="text" value="" name="christian_name" placeholder="세례명"><br>
+        </form>
+        <div style="text-align: center;">
+            <button class="snip1535" onclick="sendUser();">Send</button>
+            <button class="snip1535" onclick="createTag();">Add User</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

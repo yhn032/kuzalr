@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gameMain</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/gameMain.css" />
+</head>
+<script>
+    $(document).ready(function(){
+
+        if($("#A").val() === 'A : 0') $("#A").attr("disabled", true);
+        if($("#B").val() === 'B : 0') $("#B").attr("disabled", true)
+        if($("#C").val() === 'C : 0') $("#C").attr("disabled", true)
+        if($("#D").val() === 'D : 0') $("#D").attr("disabled", true)
+        if($("#E").val() === 'E : 0') $("#E").attr("disabled", true)
+        if($("#F").val() === 'F : 0') $("#F").attr("disabled", true)
+    });
+    function loadQuestion(inx){
+        location.href = '/question/' + inx + '/show';
+    }
+
+    function shuffleAndReplay(){
+        location.href = "/question/shuffleAndReplay";
+    }
+
+    function checkMedium(){
+        let popUrl = "/question/checkMedium";
+        let popupX = (window.screen.width / 2) - (650 / 2);
+        // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+        let popupY= (window.screen.height /2) - (1000 / 2);
+        // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+        let popOption = 'status=no, height=1000, width=650, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
+
+        window.open(popUrl, "중간 점검", popOption);
+    }
+
+    function final(){
+        let popUrl = "/question/winner";
+
+        let popupX = (window.screen.width / 2) - (650 / 2);
+        // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+        let popupY= (window.screen.height /2) - (550 / 2);
+        // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+        let popOption = 'status=no, height=550, width=650, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
+
+        window.open(popUrl, "최종우승자", popOption);
+    }
+</script>
+<body>
+    <div class="container-block">
+        <div id="option-block">
+            <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tool">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                    </svg>
+                    <input class="form_btn" type="button" value="replay" onclick="shuffleAndReplay();">
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 17 12 22 22 17" />
+                        <polyline points="2 12 12 17 22 12" />
+                    </svg>
+                    <input class="form_btn" type="button" value="home" onclick="location.href='/common/home'">
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-justify">
+                        <line x1="21" y1="10" x2="3" y2="10" />
+                        <line x1="21" y1="6" x2="3" y2="6" />
+                        <line x1="21" y1="14" x2="3" y2="14" />
+                        <line x1="21" y1="18" x2="3" y2="18" />
+                    </svg>
+                    <input class="form_btn" type="button" value="The Winner" onclick="final();">
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square">
+                        <polyline points="9 11 12 14 22 4" />
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                    <input class="form_btn" type="button" value="Medium Check" onclick="checkMedium();">
+                </li>
+            </ul>
+        </div>
+        <div style="width: 50px;"></div>
+        <div id="content-block">
+            <div style="text-align: center; margin-bottom: 150px;" >
+                <h1 style="margin-top: 50px;">Choose Question</h1>
+                <input style="margin-top: 50px;" class="form_btn2" type="button" id="A" th:value="A + ' : ' + ${ACnt}" onclick="loadQuestion(this.id)">
+                <input class="form_btn2" type="button" id="B" th:value="B + ' : ' + ${BCnt}" onclick="loadQuestion(this.id)">
+                <input class="form_btn2" type="button" id="C" th:value="C + ' : ' + ${CCnt}" onclick="loadQuestion(this.id)">
+                <input style="margin-top: 80px;" class="form_btn2" type="button" id="D" th:value="D + ' : ' + ${DCnt}" onclick="loadQuestion(this.id)">
+                <input class="form_btn2" type="button" id="E" th:value="E + ' : ' + ${ECnt}" onclick="loadQuestion(this.id)">
+                <input class="form_btn2" type="button" id="F" th:value="F + ' : ' + ${FCnt}" onclick="loadQuestion(this.id)">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

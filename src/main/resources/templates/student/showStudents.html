@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>show All</title>
+  <link rel="stylesheet" href="/css/showStudents.css">
+</head>
+<body>
+<script>
+  function closePop(){
+    window.close();
+  }
+  function updateStudent(){
+    location.href = "/student/update";
+  }
+  function resetStudent(){
+    location.href = "/student/reset";
+  }
+</script>
+<h1 style="text-align: center;">등록된 학생 리스트</h1>
+<table class="container">
+  <thead>
+    <tr>
+      <th>일련번호</th>
+      <th>이름</th>
+      <th>세례명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="student : ${studentList}">
+      <td style="width: 100px; text-align: center;" th:text="${student.id}"></td>
+      <td th:text="${student.name}"></td>
+      <td th:text="${student.christian_name}"></td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: center;">
+  <button class="snip1535" onclick="closePop();">Okay</button>
+  <button class="snip1535" onclick="updateStudent();">Modify</button>
+  <button class="snip1535" onclick="resetStudent();">Reset</button>
+</div>
+</body>
+</html>

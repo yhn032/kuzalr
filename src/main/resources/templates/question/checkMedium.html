@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkMedium</title>
+    <link rel="stylesheet" href="/css/checkMedium.css">
+</head>
+<body>
+    <h1 style="text-align: center;">중간 집계</h1>
+    <div class="grid-container">
+        <div class="grid-item form_btn" th:each="student : ${studentList}">
+            <img th:src="${student.imgUrl}" width="80px" height="80px;">
+            <div style="width: 120px; height: 80px;">
+                <p th:id="${student.id}" th:text="${student.name}"></p>
+                <p style="height: 40px;" th:text="${student.christian_name}"></p>
+                <p style="margin-top: 5px; color: red;" th:text="${student.cnt}"></p>
+            </div>
+        </div>
+    </div>
+    <button  class="button button--pipaluk button--text-thick" id="closeBtn" onclick="window.close();">Cancel</button>
+</body>
+</html>

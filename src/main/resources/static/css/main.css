@@ -1,0 +1,23 @@
+body {
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+}
+
+
+.form_btn {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 4px #babebc;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 15px 45px;
+    margin: 50px 14px 14px 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 80ms ease-in;;
+    background-color: rgba(0,0,0,0);
+}

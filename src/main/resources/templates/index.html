@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<script>
+    const userBtn = document.getElementById("user_btn");
+    function createUser() {
+        let popUrl = "/student/new";
+
+        let popupX = (window.screen.width / 2) - (650 / 2);
+        // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+        let popupY= (window.screen.height /2) - (550 / 2);
+        // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+        let popOption = 'status=no, height=550, width=650, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
+
+        window.open(popUrl, "참가 인원 추가", popOption);
+    }
+
+    function gameStart(){ // ajax로 날려서 결과확인한 후에 넘어가던지 alert 뛰우자
+        $.ajax({
+            url: '/common/gameStart',
+            method : 'GET',
+            success :  function(data){
+                if(data === 'success'){
+                    location.href = '/common/gameStarts';
+                }else if(data === 'fail'){
+                    alert("인원을 추가하세요!");
+                    return;
+                }
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        });
+
+    }
+
+</script>
+<body style="background: url(/img/main.jpg) no-repeat center;">
+<input class="form_btn" id="user_btn" type="button" value="참가인원설정" onclick="createUser()">
+<input class="form_btn" id="game_start" type="button" value="게임 시작" onclick="gameStart()">
+<input class="form_btn" id="reset" type="button" value="초기화" onclick="location.href = '/student/resetAll'">
+
+</body>
+</html>

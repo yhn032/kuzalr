@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update Student</title>
+    <link rel="stylesheet" href="/css/showStudents.css">
+</head>
+<script>
+    function createTag(){
+
+        const tagArea = document.getElementById('usrForm');
+        const new_Tag = document.createElement('input');
+        const new_Tag2 = document.createElement('input');
+        const new_br = document.createElement('br');
+
+        new_Tag.setAttribute('type', 'text');
+        new_Tag.setAttribute('class', 'inputTxt');
+        new_Tag.setAttribute('value', '');
+        new_Tag.setAttribute('name', 'name');
+        new_Tag.setAttribute('placeholder', '이름');
+
+        new_Tag2.setAttribute('type', 'text');
+        new_Tag2.setAttribute('class', 'inputTxt');
+        new_Tag2.setAttribute('value', '');
+        new_Tag2.setAttribute('name', 'christian_name');
+        new_Tag2.setAttribute('placeholder', '세례명');
+
+        tagArea.appendChild(new_Tag);
+        tagArea.appendChild(new_Tag2);
+        tagArea.appendChild(new_br);
+
+    }
+
+    function sendUser(){
+        const usrForm = document.getElementById("usrForm");
+        usrForm.submit();
+    }
+</script>
+<body>
+<div class="container right-panel-active">
+    <div class="container__form container--signup" style="text-align: center">
+        <form id="usrForm" action="/student/update" method="post">
+            <h1 class="form__title">Update User</h1>
+            <div th:each="student : ${studentList}">
+                <input type="hidden" th:value="${student.id}" name="id">
+                <input class="inputTxt" type="text" th:value="${student.name}" name="name" placeholder="이름">
+                <input class="inputTxt" type="text" th:value="${student.christian_name}" name="christian_name" placeholder="세례명"><br>
+            </div>
+        </form>
+        <div style="text-align: center; width: 800px;">
+            <button class="snip1535" onclick="sendUser();">Send</button>
+            <button class="snip1535" onclick="createTag();">Add User</button>
+            <button class="snip1535" onclick="location.href='/student/new'">Cancel</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

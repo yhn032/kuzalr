@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkScore</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/checkMedium.css">
+</head>
+<script>
+    function plusCnt(studentId){
+        let q_id = $("#q_id").val();
+        const obj={
+            "studentId" : studentId,
+            "q_id" :q_id
+        };
+        $.ajax({
+            url: '/student/plusCnt',
+            data: obj,
+            method : 'GET',
+            success :  function(data){
+                if(data === 'success'){
+                    alert("1점 추가!");
+                    window.close();
+                }else if(data === 'fail'){
+                    alert("점수 추가 실패!");
+                }
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        });
+    }
+</script>
+<body>
+<input id="q_id" type="hidden" th:value="${q_id}">
+
+<h1 style="text-align: center;">정답 체크</h1>
+<div class="grid-container">
+    <div class="grid-item form_btn" th:id="${student.id}" th:each="student : ${studentList}" onclick="plusCnt(this.id)">
+        <img th:src="${student.imgUrl}" width="80px" height="80px;">
+        <div style="width: 120px; height: 80px;">
+            <p th:id="${student.id}" th:text="${student.name}"></p>
+            <p th:text="${student.christian_name}" style="margin-top: 10px; height: 40px; line-height: 20px;"></p>
+        </div>
+    </div>
+</div>
+<button  class="button button--pipaluk button--text-thick" id="closeBtn" onclick="window.close();">Cancel</button>
+</body>
+</html>
