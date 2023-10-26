@@ -20,11 +20,11 @@
             success :  function(data){
                 if(data === 'success'){
                     let popUrl = "/question/checkScore?q_id=" + q_id;
-                    let popupX = (window.screen.width / 2) - (650 / 2);
+                    let popupX = (window.screen.width / 2) - (1000 / 2);
                     // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
                     let popupY= (window.screen.height /2) - (1000 / 2);
                     // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-                    let popOption = 'status=no, height=1000, width=650, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
+                    let popOption = 'status=no, height=1000, width=1000, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
 
                     window.open(popUrl, "중간 점검", popOption);
                 }else if(data === 'fail'){
@@ -45,42 +45,54 @@
 </script>
 <body>
 <input type="hidden" id="q_id" th:value="${question.id}">
+<div id="title" style="text-align: center; display: flex; flex-direction: row; justify-content: center; height: 150px;">
+    <h1 style="font-size: 100px; font-weight: 700; margin-top: 30px;">구.잘.알</h1>
+    <img src="/img/mozzi2.jpg" width="130px" height="130px" style="margin-top: 20px;">
+</div>
 <div class="container-block">
-    <div id="option-block">
-        <ul>
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tool">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-                <input class="form_btn" type="button" value="뒤로가기" onclick="location.href='/common/gameStarts'">
-            </li>
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                    <polyline points="2 17 12 22 22 17" />
-                    <polyline points="2 12 12 17 22 12" />
-                </svg>
-                <input class="form_btn" type="button" value="정답자 체크" onclick="check();">
-            </li>
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-justify">
-                    <line x1="21" y1="10" x2="3" y2="10" />
-                    <line x1="21" y1="6" x2="3" y2="6" />
-                    <line x1="21" y1="14" x2="3" y2="14" />
-                    <line x1="21" y1="18" x2="3" y2="18" />
-                </svg>
-                <input class="form_btn" type="button" value="정답 보기" onclick="showAnswer();">
-            </li>
-        </ul>
-    </div>
-    <div style="width: 50px;"></div>
-    <div id="content-block">
-        <div style="text-align: center;">
-            <h1 style="display: inline; margin-top: 50px;">Question Group : </h1><h1 style="display: inline" th:text="${question.type}"></h1> <br>
-            <p id="question" th:text="${question.question}" style="white-space: pre-line; margin-top: 70px; width: 1000px; height: 100px; font-size: 50px; font-weight: bold; text-align: center; align-items: center"></p>
-            <p id="answer" th:text="${question.answer}" style="white-space: pre-line; display: none; margin-top: 100px; width: 1000px; height: auto; font-size: 70px; font-weight: bold; text-align: center"></p>
+    <div>
+        <div id="option-block">
+            <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tool">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                    </svg>
+                    <input class="form_btn" type="button" value="back" onclick="location.href='/common/gameStarts'">
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 17 12 22 22 17" />
+                        <polyline points="2 12 12 17 22 12" />
+                    </svg>
+                    <input class="form_btn" type="button" value="Correct" onclick="check();">
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-justify">
+                        <line x1="21" y1="10" x2="3" y2="10" />
+                        <line x1="21" y1="6" x2="3" y2="6" />
+                        <line x1="21" y1="14" x2="3" y2="14" />
+                        <line x1="21" y1="18" x2="3" y2="18" />
+                    </svg>
+                    <input class="form_btn" type="button" value="Show Answer" onclick="showAnswer();">
+                </li>
+            </ul>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+            <img src="/img/mozzi1.jpg" width="300px" height="300px;">
         </div>
     </div>
+    <div style="width: 50px;"></div>
+    <div>
+        <div id="content-block">
+            <div style="text-align: center;">
+                <h1 style="display: inline; margin-top: 50px;">Question Group : </h1><h1 style="display: inline" th:text="${question.type}"></h1> <br>
+                <p id="question" th:text="${question.question}" style="white-space: pre-line; margin-top: 70px; width: 1000px; height: 100px; font-size: 50px; font-weight: bold; text-align: center; align-items: center"></p>
+                <p id="answer" th:text="${question.answer}" style="white-space: pre-line; display: none; margin-top: 100px; width: 1000px; height: auto; font-size: 70px; font-weight: bold; text-align: center"></p>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

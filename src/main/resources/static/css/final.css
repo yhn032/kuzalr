@@ -24,7 +24,6 @@ body {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: row;
     margin: 0 auto;
 }
@@ -41,10 +40,11 @@ body {
     height: 120px;
 }
 #user0 > #userStat{
-    font-size: 25px;
-    width: 180px;
+    font-size: 22px;
+    width: 220px;
 }
 #user0 p {
+    width: 100%;
     height: 40px;
 }
 
@@ -60,11 +60,12 @@ body {
     height: 100px;
 }
 #user1 > #userStat{
-    font-size: 20px;
+    font-size: 16px;
     width: 150px;
 }
 #user1 p {
     height: 25px;
+    width: 100%;
 }
 
 #user2{
@@ -79,11 +80,12 @@ body {
     height: 80px;
 }
 #user2 > #userStat{
-    font-size: 14px;
+    font-size: 11px;
     width: 120px;
 }
 #user2 p {
     height: 20px;
+    width: 100%;
 }
 
 #count{

@@ -8,6 +8,7 @@ body {
     flex-direction: row;
     margin-top: 100px;
     gap: 30px 10px;
+    flex-wrap: wrap;
 }
 
 #option-block{
@@ -21,7 +22,7 @@ body {
 #content-block{
     background: white;
     width: 1000px;
-    height: 100%;
+    height: 680px;
     margin-bottom: auto;
 }
 
@@ -66,4 +67,8 @@ ul{
     cursor: pointer;
     transition: transform 80ms ease-in;
     box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+}
+
+h1{
+    margin: 0;
 }

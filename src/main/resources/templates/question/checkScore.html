@@ -41,7 +41,7 @@
 <h1 style="text-align: center;">정답 체크</h1>
 <div class="grid-container">
     <div class="grid-item form_btn" th:id="${student.id}" th:each="student : ${studentList}" onclick="plusCnt(this.id)">
-        <img th:src="${student.imgUrl}" width="80px" height="80px;">
+        <img th:src="${student.imgUrl}" width="80px" height="80px;" style="margin-left: 5px;">
         <div style="width: 120px; height: 80px;">
             <p th:id="${student.id}" th:text="${student.name}"></p>
             <p th:text="${student.christian_name}" style="margin-top: 10px; height: 40px; line-height: 20px;"></p>

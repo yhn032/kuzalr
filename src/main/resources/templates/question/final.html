@@ -11,7 +11,7 @@
     <div class="grid-item form_btn" th:each="student : ${top3}" th:id="'user'+${studentStat.index}">
         <div id="count" th:text="${studentStat.index + 1 + '등'}"></div>
         <img id="userImg" th:src="${student.imgUrl}" width="80px" height="80px;">
-        <div id="userStat" style="width: 120px; height: 80px;">
+        <div id="userStat">
             <p th:id="${student.id}" th:text="${student.name}"></p>
             <p th:text="${student.christian_name}"></p>
             <p style="color: red;" th:text="${student.cnt}"></p>

@@ -8,7 +8,7 @@ body {
 
 .grid-container{
     margin-top: 70px;
-    width: 800px;
+    width: 1000px;
     display: grid;
     grid: '. . .';
     row-gap: 70px;
@@ -18,11 +18,10 @@ body {
 
 .grid-item {
     border: 1px solid black;
-    width: 210px;
+    width: 260px;
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: row;
 }
 
@@ -33,7 +32,7 @@ body {
 p {
     margin: 0;
     text-align: center;
-    width: 120px;
+    width: 170px;
     height: 20px;
 }
 

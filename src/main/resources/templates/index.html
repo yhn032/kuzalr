@@ -12,11 +12,11 @@
     function createUser() {
         let popUrl = "/student/new";
 
-        let popupX = (window.screen.width / 2) - (650 / 2);
+        let popupX = (window.screen.width / 2) - (800 / 2);
         // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-        let popupY= (window.screen.height /2) - (550 / 2);
+        let popupY= (window.screen.height /2) - (650 / 2);
         // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-        let popOption = 'status=no, height=550, width=650, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
+        let popOption = 'status=no, height=650, width=800, scrollbar=yes,left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY;
 
         window.open(popUrl, "참가 인원 추가", popOption);
     }

@@ -48,9 +48,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
 def querydslDir =  "src/main/generated"
 
 querydsl {
@@ -67,22 +64,6 @@ sourceSets {
         }
     }
 }
-
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
 }
-//def querydslDir = "$buildDir/generated/querydsl"
-//
-//querydsl {
-//    jpa = true
-//    querydslSourcesDir = querydslDir
-//}
-//sourceSets {
-//    main.java.srcDir querydslDir
-//}
-//configurations {
-//    querydsl.extendsFrom compileClasspath
-//}
-//compileQuerydsl {
-//    options.annotationProcessorPath = configurations.querydsl
-//}

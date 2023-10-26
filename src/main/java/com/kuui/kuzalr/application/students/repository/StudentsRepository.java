@@ -1,6 +1,5 @@
 package com.kuui.kuzalr.application.students.repository;
 
-import com.kuui.kuzalr.application.students.domain.QStudent;
 import com.kuui.kuzalr.application.students.domain.Student;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
