@@ -58,4 +58,7 @@ public class StudentsService {
 
     @Transactional
     public Long updateImgUrl(Long id, String url) {return studentsRepository.updateImgUrl(id,url);}
+
+
+    public List<Student> findAllImgNull(){return studentsRepository.findAllImgNull();}
 }

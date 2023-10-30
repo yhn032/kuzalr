@@ -72,6 +72,11 @@ public class StudentsController {
     @PostMapping("/student/update")
     public String update(@RequestParam("id")Long[] id,@RequestParam("name")String[] name, @RequestParam("christian_name") String[] c_name, Model model){
         List<Student> allStudentList = new ArrayList<>();
+        System.out.println("id.length = " + id.length);
+        System.out.println("name.length = " + name.length);
+        System.out.println("c_name.length = " + c_name.length);
+
+        //id개수 만큼 update
         for(int i=0; i<id.length; i++){
             Student student = new Student();
             student.setId(id[i]);
@@ -80,8 +85,22 @@ public class StudentsController {
 
             allStudentList.add(student);
         }
-
         studentsService.update(allStudentList);
+
+
+        HashMap<String, String> studentName = new HashMap<>();
+        for(int i=id.length; i<name.length;i++){
+            if(name[i].equals("")) continue;
+            studentName.put(name[i], c_name[i]);
+        }
+        if(id.length < name.length){ //새로운 학생이 들어온 경우 해당 학생은 신규 추가 save
+            studentsService.createUser(studentName);
+
+            //img url이 없는 친구들만 조회하여 업데이트하기
+            List<Student> allImgNull = studentsService.findAllImgNull();
+
+            allImgNull.forEach(student -> studentsService.updateImgUrl(student.getId(), "/img/" + student.getId().intValue() % 15 + ".jpg"));
+        }
 
         List<Student> allStudentList2 = studentsService.findAllStudentList();
         model.addAttribute("studentList", allStudentList2);

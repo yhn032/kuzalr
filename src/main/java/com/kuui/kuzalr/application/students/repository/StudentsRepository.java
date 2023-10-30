@@ -21,6 +21,11 @@ public class StudentsRepository {
         em.persist(student);
     }
 
+    //이미지가 없는 친구들만 조회
+    public List<Student> findAllImgNull() {
+        return em.createQuery("select s from Student s where s.imgUrl is null").getResultList();
+    }
+
     public List<Student> findAllStudentList() {
         return em.createQuery("select s from Student s").getResultList();
     }
